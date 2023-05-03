@@ -17,8 +17,8 @@ class Caesar_Cipher():
                 
                 if num > 25:
                     #if the letter is "higher" than Z, restart the alphabet from letter A
-                    rest -= 25
-                    num = -1
+                    rest -= 26
+                    num = 0
                     num += rest
                 
                 if num < 0:
@@ -29,12 +29,12 @@ class Caesar_Cipher():
             else:
                 encrypted_word += word_letters
                 
-        print("Your word in Caesar Cipher is: " + encrypted_word)
+        print("Your sentence with Caesar Cipher is: " + encrypted_word)
     
     def decrypter(self,word,key):
         letters = self.alphabet
         
-        decrypted_word = ''
+        combinations_sentence = ''
         for word_letters in word:
             x = word_letters
             
@@ -45,9 +45,32 @@ class Caesar_Cipher():
                 if num > 25:
                     num = 0
                 
-                decrypted_word += letters[num]
+                combinations_sentence += letters[num]
             else:
-                decrypted_word += word_letters
+                combinations_sentence += word_letters
                 
-        print("The original word of the Caesar Cipher is: "+decrypted_word)
-        
+        print("The original sentence of the Caesar Cipher is: "+combinations_sentence)
+    
+    def Break_Cipher(self,word):
+        keys = 0
+        while(keys < 26):
+            keys += 1
+            letters = self.alphabet
+            
+            combinations_sentence = ''
+            for word_letters in word:
+                x = word_letters
+                
+                if x in letters:
+                    num = letters.find(word_letters)
+                    num -= keys
+                    
+                    if num > 25:
+                        num = 0
+                    
+                    combinations_sentence += letters[num]
+                else:
+                    combinations_sentence += word_letters
+                    
+            print("Key #:",keys," sentence: ",combinations_sentence)
+
