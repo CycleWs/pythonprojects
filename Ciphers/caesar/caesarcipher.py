@@ -15,9 +15,9 @@ class Caesar_Cipher():
                 num += key
                 rest = num
                 
-                if num > 25:
+                if num > letters.__len__():
                     #if the letter is "higher" than Z, restart the alphabet from letter A
-                    rest -= 26
+                    rest -= letters.__len__() + 1
                     num = 0
                     num += rest
                 
@@ -42,7 +42,7 @@ class Caesar_Cipher():
                 num = letters.find(word_letters)
                 num -= key
                 
-                if num > 25:
+                if num > letters.__len__():
                     num = 0
                 
                 combinations_sentence += letters[num]
